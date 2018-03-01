@@ -15,7 +15,18 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet weak var messageField: UITextField!
     
     var messages: [PFObject] = []
+    var timer: Timer?
     
+    @IBAction func logoutButton(_ sender: Any) {
+        PFUser.logOut()
+        self.navigationController?.dismiss(animated: true, completion: {
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let loginViewController = storyboard.instantiateViewController(withIdentifier: "loginViewController")
+            let window :UIWindow? = UIApplication.shared.keyWindow
+            window?.rootViewController = loginViewController
+            self.timer?.invalidate()
+        })
+    }
     @IBAction func sendButton(_ sender: Any) {
         let chatMessage = PFObject(className: "Message")
         chatMessage["text"] = messageField.text ?? ""
@@ -40,7 +51,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         // Provide an estimated row height. Used for calculating scroll indicator
         chatTableView.estimatedRowHeight = 50
         
-        Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.getMessages), userInfo: nil, repeats: true)
+        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.getMessages), userInfo: nil, repeats: true)
         getMessages()
         
     }
