@@ -16,6 +16,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     var messages: [PFObject] = []
     var timer: Timer?
+    let cellSpacingHeight: CGFloat = 10
     
     @IBAction func logoutButton(_ sender: Any) {
         PFUser.logOut()
@@ -44,6 +45,8 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        chatTableView.separatorStyle = .none
         chatTableView.dataSource = self
         chatTableView.delegate = self
         
@@ -72,13 +75,31 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return messages.count
     }
     
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+    
+    // Set the spacing between sections
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return cellSpacingHeight
+    }
+    
+    
+    // Make the background color show through
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView = UIView()
+        headerView.backgroundColor = UIColor.clear
+        return headerView
+    }
+    
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = chatTableView.dequeueReusableCell(withIdentifier: "ChatCell", for: indexPath) as! ChatCell
-        let message = messages[indexPath.row]
+        let message = messages[indexPath.section]
         cell.chatMsg.text = message["text"] as? String
         if let user = message["user"] as? PFUser {
             // User found! update username label with username

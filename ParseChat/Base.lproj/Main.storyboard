@@ -77,13 +77,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Type a Message..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Hwg-Ba-pov">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Type a Message..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Hwg-Ba-pov">
                                 <rect key="frame" x="8" y="72" width="309" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XCy-hZ-0gH">
+                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XCy-hZ-0gH">
                                 <rect key="frame" x="325" y="72" width="42" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <state key="normal" title="Send"/>
@@ -116,6 +116,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <color key="backgroundColor" red="0.62352128770000004" green="0.79436528500000003" blue="0.7708681261" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="trailing" secondItem="C4y-3d-7X6" secondAttribute="trailing" constant="8" id="2xa-GR-rGR"/>
                                                 <constraint firstItem="coV-Af-30T" firstAttribute="leading" secondItem="yGB-1x-ZXq" secondAttribute="leading" constant="8" id="8ug-Qf-bYx"/>
@@ -127,6 +128,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="bubbleView" destination="yGB-1x-ZXq" id="cJ2-bc-iKF"/>
                                             <outlet property="chatMsg" destination="coV-Af-30T" id="bH9-jV-u5s"/>
                                             <outlet property="userName" destination="C4y-3d-7X6" id="a59-6d-nKK"/>
                                         </connections>
@@ -159,7 +161,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3HR-ND-Y2F" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="382" y="-592"/>
+            <point key="canvasLocation" x="381.60000000000002" y="-592.35382308845578"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="IKi-Yr-Q2c">
